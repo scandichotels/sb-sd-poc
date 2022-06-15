@@ -1,0 +1,9 @@
+{
+  "global": {
+    "red": {
+      "value": "#f00",
+      "type": "color"
+    }
+  },
+  "$themes": []
+}
