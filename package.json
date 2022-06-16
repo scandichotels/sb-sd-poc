@@ -11,7 +11,8 @@
     "build-storybook": "build-storybook",
     "generate-tokens": "yarn run generate-tokens:transform-figma-tokens && yarn run generate-tokens:style-dictionary",
     "generate-tokens:transform-figma-tokens": "yarn token-transformer ./style-dictionary/source/figma-tokens.json ./style-dictionary/build/sd-tokens.json --resolveReferences true --preserveRawValue true --expandTypography true --expandShadow true",
-    "generate-tokens:style-dictionary": "node ./style-dictionary/sd.build.js"
+    "generate-tokens:style-dictionary": "node ./style-dictionary/sd.build.js",
+    "chromatic": "npx chromatic --project-token=8e20136ec77b --exit-zero-on-changes"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
