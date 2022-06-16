@@ -69,7 +69,7 @@
     },
     "brand": {
       "nordic-sea": {
-        "value": "#00838E",
+        "value": "#000000",
         "type": "color",
         "description": "Nordic sea"
       },
