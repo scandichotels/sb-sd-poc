@@ -53,11 +53,11 @@
         "type": "color"
       },
       "teal-dark": {
-        "value": "#7c321e",
+        "value": "#006B75",
         "type": "color"
       },
       "teal": {
-        "value": "#f8f8f8",
+        "value": "#00838E",
         "type": "color"
       }
     },
@@ -69,7 +69,7 @@
     },
     "brand": {
       "nordic-sea": {
-        "value": "#000000",
+        "value": "#00838E",
         "type": "color",
         "description": "Nordic sea"
       },
