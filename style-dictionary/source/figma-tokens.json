@@ -1,11 +1,5 @@
 {
-  "global": {
-    "red": {
-      "value": "#f00",
-      "type": "color"
-    }
-  },
-  "Scandic-global": {
+  "scandic-global": {
     "backgrounds": {
       "site": {
         "value": "#f3f2f1",
