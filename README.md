@@ -48,8 +48,7 @@ npm install @mui/icons-material
 
 ## Install Material UI date and time picker:
 ```
-npm install @date-io/date-fns
-npm install date-fns @types/date-fns
+`npm install @date-io/date-fns` or `npm install date-fns @types/date-fns`
 npm install @mui/x-date-pickers
 ```
 
