@@ -1,3 +1,8 @@
+import React from "react";
+import { addDecorator } from "@storybook/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { muiTheme } from "../styles/stylesheet";
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +11,8 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
+
+addDecorator((story) => (
+  <ThemeProvider theme={muiTheme}>{story()}</ThemeProvider>
+));
