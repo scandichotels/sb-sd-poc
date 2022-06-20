@@ -34,3 +34,48 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Create Next.js and TypeScript project:
+```
+npx create-next-app --typescript
+```
+
+## Install Material UI:
+```
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+```
+
+## Install Material UI date and time picker:
+```
+npm install @date-io/date-fns
+npm install date-fns @types/date-fns
+npm install @mui/x-date-pickers
+```
+
+## Install and run Storybook:
+```
+npx sb init
+npm run storybook
+```
+
+## Install Style Dictionary:
+```
+npm install -D style-dictionary
+mkdir style-dictionary
+cd style-dictionary
+style-dictionary init basic (create starter code)
+style-dictionary build
+```
+
+## Install Token Transformer:
+```
+npm install -D token-transformer
+```
+
+## Install and run Chromatic:
+```
+npm install --save-dev chromatic 
+npx chromatic --project-token= chromatic_project_token
+npx chromatic --project-token= chromatic_project_token --force-rebuild
+```
