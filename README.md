@@ -213,6 +213,9 @@ In the `sd.config.json` file paste the following code:
 ```
 
 ## Install and run Chromatic:
+
+Setup a new project in chromatic and copy the `chromatic_project_token`. 
+
 ```
 npm install --save-dev chromatic 
 npx chromatic --project-token= chromatic_project_token
