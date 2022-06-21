@@ -1,40 +1,5 @@
 # sb-sd-poc
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
 ## Create Next.js and TypeScript project:
 ```
 npx create-next-app --typescript
@@ -70,6 +35,181 @@ style-dictionary build
 ## Install Token Transformer:
 ```
 npm install -D token-transformer
+```
+
+Add the following script commands to `package.json`.
+
+```
+"generate-tokens": "yarn run generate-tokens:transform-figma-tokens && yarn run generate-tokens:style-dictionary",
+"generate-tokens:transform-figma-tokens": "yarn token-transformer ./style-dictionary/source/figma-tokens.json ./style-dictionary/build/sd-tokens.json --resolveReferences true --preserveRawValue true --expandTypography true --expandShadow true",
+"generate-tokens:style-dictionary": "node ./style-dictionary/sd.build.js"
+```
+
+Remove the starter code from the `style-dictionary` folder and add the folowing files structure:
+```
+style-dictionary
+  - build/sd-tokens.json
+  - source/figma-tokens.json
+  - sd.build.js
+  - sd.config.json
+```
+
+In the `sd.build.js` file paste the following code:
+
+```
+const styleDictionary = require('../node_modules/style-dictionary').extend('./style-dictionary/sd.config.json');
+
+// Do custome stuff here
+// https://amzn.github.io/style-dictionary/#/api
+
+// Add a group name to the attribute hierarchy one level above the category. This make a lot of Style dictionary's built-in functions and filters work out of the box as they assume the tokens follow the "cti" structure.
+styleDictionary.registerTransform({
+  name: 'attribute/gcti',
+  type: 'attribute',
+  transformer: function(token) {
+
+    const attrNames = ['group', 'category', 'type', 'item', 'subitem', 'state'];
+    const originalAttrs = token.attributes || {};
+    const generatedAttrs =  {}
+
+    for(let i=0; i<token.path.length && i<attrNames.length; i++) {
+      generatedAttrs[attrNames[i]] = token.path[i];
+    }
+
+    return Object.assign(generatedAttrs, originalAttrs);
+  }
+});
+
+
+// Convert unit less sizes to rem but NOT if they are defined as px. IF the value is in px we will keep them as px for better accessibility (https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/)
+styleDictionary.registerTransform({
+  name: 'sizeToRem',
+  type: 'value',
+  matcher: function(token) {
+    return token.type === 'fontSize' || token.type === 'fontSizes' || token.type === 'borderRadius' || token.type === 'sizing' || token.type === 'spacing';
+  },
+  transformer: (token) => {
+    if(!token.value.toString().includes('px')) {
+
+      const baseFont = 16;
+      const floatVal = parseFloat(token.value);
+      
+      if (isNaN(floatVal)) {
+        throwSizeError(token.name, token.value, 'rem');
+      }
+      
+      if (floatVal === 0) {
+        return '0';
+      }
+      
+      return `${floatVal / baseFont}rem`;
+    }
+
+    return token.value;
+  }
+});
+
+
+// Convert line height in percents to decimal for better accessibility
+styleDictionary.registerTransform({
+  name: 'lineHeightToDecimal',
+  type: 'value',
+  matcher: function(token) {
+    return token.type === 'lineHeight';
+  },
+  transformer: (token) => {
+    if(token.value.toString().includes('%')) {
+      const dec = parseInt(token.value.replace('%', '')) / 100;
+      return dec;
+    }
+
+    return token.value;
+  }
+});
+
+
+// Remove TextCase. from value TextCase.uppercase
+styleDictionary.registerTransform({
+  name: 'textCase',
+  type: 'value',
+  matcher: function(token) {
+    return token.type === 'textCase';
+  },
+  transformer: (token) => {
+    if(token.value.toString().includes('TextCase.')) {
+      return token.value.replace('TextCase.', '');
+    }
+
+    return token.value;
+  }
+});
+
+
+// Create custome token name
+styleDictionary.registerTransform({
+  name: 'name/gcti/snakeKebab',
+  type: 'name',
+  transformer: (token, options) => {
+    const snakeCamel = [options.prefix].concat(token.path).join('_');
+    const snakeKebab = snakeCamel.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase();
+    return snakeKebab;
+  }
+});
+
+styleDictionary.buildAllPlatforms();
+```
+
+In the `sd.config.json` file paste the following code:
+
+```
+{
+  "source": ["./style-dictionary/build/sd-tokens.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "transforms": [
+        "attribute/gcti",
+        "name/gcti/snakeKebab",
+        "sizeToRem",
+        "lineHeightToDecimal",
+        "textCase"
+      ],
+      "prefix": "token",
+      "buildPath": "./styles/",
+      "files": [
+        {
+          "destination": "design-tokens.css",
+          "format": "css/variables",
+          "options": {
+            "outputReferences": true
+          }
+        }
+      ]
+    },
+    "js": {
+      "transformGroup": "js",
+      "transforms": [
+        "attribute/gcti",
+        "name/cti/camel",
+        "sizeToRem",
+        "lineHeightToDecimal",
+        "textCase"
+      ],
+      "prefix": "token",
+      "buildPath": "./styles/",
+      "files": [
+        {
+          "destination": "design-tokens.js",
+          "format": "javascript/es6",
+          "options": {
+            "outputReferences": true
+          }
+        }
+      ]
+    }
+  }
+}
+
 ```
 
 ## Install and run Chromatic:
