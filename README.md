@@ -251,9 +251,9 @@ npx chromatic --project-token= chromatic_project_token --force-rebuild
 
 ## Automate the transformation of Figma tokens with GitHub Actions
 
-- Create a .github/workflows folder in the root of the project.
+- Create a `.github/workflows` folder in the root of the project.
 
-- Create an `transform-tokens.yml` file and add the following code:
+- Create a `transform-tokens.yml` file and add the following code:
 
 ```
 //.github/workflows/transform-tokens.yml
@@ -286,3 +286,30 @@ jobs:
 ```
 
 ## Automate Chromatic with GitHub Actions
+
+- In the `.github/workflows` folder create a `chromatic.yml` file and add the following code:
+
+````
+//.github/workflows/chromatic.yml
+
+name: Chromatic deploy
+
+on:
+  workflow_run:
+    workflows: [Transform Figma Tokens]
+    types:
+      - completed
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
