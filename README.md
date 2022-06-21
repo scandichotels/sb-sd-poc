@@ -249,7 +249,7 @@ npx chromatic --project-token= chromatic_project_token --force-rebuild
   <img width="400" alt="Screenshot 2022-06-20 at 17 01 57" src="https://user-images.githubusercontent.com/43675670/174630918-78a35fe9-7f55-4ec3-8858-a73924a23fde.png">
 </div>
 
-## Automating the transformation of Figma tokens with the use of GitHub Actions
+## Automate the transformation of Figma tokens with GitHub Actions
 
 - Create a .github/workflows folder in the root of the project.
 
@@ -284,3 +284,5 @@ jobs:
           commit_message: Update platform deliverables
 
 ```
+
+## Automate Chromatic with GitHub Actions
