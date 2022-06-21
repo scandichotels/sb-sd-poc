@@ -293,6 +293,7 @@ jobs:
   <img width="700" align="center" alt="Screenshot 2022-06-21 at 14 18 07" src="https://user-images.githubusercontent.com/43675670/174797317-8b99403b-6ccb-427a-81d3-678547bdd1b4.png">
 </div>
 
+
 - In the `.github/workflows` folder create a `chromatic.yml` file and add the following code:
 
 ```
