@@ -78,3 +78,30 @@ npm install --save-dev chromatic
 npx chromatic --project-token= chromatic_project_token
 npx chromatic --project-token= chromatic_project_token --force-rebuild
 ```
+
+## Connect Figma tokens plugin with a GitHub repo:
+- Create GitHub token
+
+<div align="center">
+  <img width="900" alt="Screenshot 2022-06-20 at 16 33 32" src="https://user-images.githubusercontent.com/43675670/174627098-40e22779-4d22-41fe-8dbd-c2934f9a6439.png">
+</div>
+
+- Add the new created GitHub token to Figma tokens plugin
+
+<div align="center">
+  <img width="400" alt="Screenshot 2022-06-20 at 16 51 11" src="https://user-images.githubusercontent.com/43675670/174629173-474117de-7a4d-4d26-b13a-189b6894823b.png">
+</div>
+
+<div align="center">
+  <img width="400" alt="Screenshot 2022-06-20 at 16 53 42" src="https://user-images.githubusercontent.com/43675670/174629189-04d1f0f3-06eb-4d6d-9e5e-22ff7c2b632c.png">
+</div>
+
+- Change or create a token in Figma and push to your GitHub repo
+
+<div align="center">
+  <img width="400" alt="Screenshot 2022-06-20 at 16 59 43" src="https://user-images.githubusercontent.com/43675670/174630374-d76d2553-2449-424c-8b0b-ce078265ad67.png">
+</div>
+
+<div align="center">
+  <img width="400" alt="Screenshot 2022-06-20 at 17 01 57" src="https://user-images.githubusercontent.com/43675670/174630918-78a35fe9-7f55-4ec3-8858-a73924a23fde.png">
+</div>
