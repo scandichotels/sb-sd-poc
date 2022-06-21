@@ -248,3 +248,39 @@ npx chromatic --project-token= chromatic_project_token --force-rebuild
 <div align="center">
   <img width="400" alt="Screenshot 2022-06-20 at 17 01 57" src="https://user-images.githubusercontent.com/43675670/174630918-78a35fe9-7f55-4ec3-8858-a73924a23fde.png">
 </div>
+
+## Automating the transformation of Figma tokens
+
+- Create a .github/workflows folder in the root of the project.
+
+- Create an `transform-tokens.yml` file and add the following code:
+
+```
+//.github/workflows/transform-tokens.yml
+
+name: Transform Figma Tokens
+
+on:
+  push:
+    paths:
+      - "style-dictionary/source/figma-tokens.json"
+
+jobs:
+  transform_figma_tokens:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - name: Install Node Dependencies
+        run: npm install
+      - name: Build Style Dictionary
+        run: yarn run generate-tokens
+      - name: Commit Generated Platform Deliverables
+        id: "auto-commit-action"
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update platform deliverables
+
+```
