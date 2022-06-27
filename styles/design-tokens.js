@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 27 Jun 2022 22:33:30 GMT
+ * Generated on Mon, 27 Jun 2022 22:42:01 GMT
  */
 
 export const tokenBackgroundsSite = "#f3f2f1";

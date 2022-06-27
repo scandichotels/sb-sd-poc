@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 27 Jun 2022 22:33:30 GMT
+ * Generated on Mon, 27 Jun 2022 22:42:01 GMT
  */
 
 :root {
@@ -91,7 +91,7 @@
   --token_-s_x: 0;
   --token_-s_type: dropShadow;
   --token_-s_color: #0000000d;
-  --token_semantic_warning light: #fbe3d3;
+  --token_semantic_warning-light: #fbe3d3;
   --token_semantic_warning: #fa9f47;
   --token_semantic_information: #0090e0;
   --token_semantic_success: #34c240;
@@ -103,7 +103,7 @@
   --token_components_teal: #00838E;
   --token_components_teal-dark: #006B75;
   --token_components_orange: #c65214;
-  --token_member_dark brown: #3d3835;
+  --token_member_dark-brown: #3d3835;
   --token_member_brown: #5f5043;
   --token_text_black: #404040;
   --token_text_white: #ffffff;
