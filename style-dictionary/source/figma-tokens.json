@@ -42,7 +42,7 @@
         "value": "#5f5043",
         "type": "color"
       },
-      "dark brown": {
+      "dark-brown": {
         "value": "#3d3835",
         "type": "color"
       }
@@ -99,7 +99,7 @@
         "value": "#fa9f47",
         "type": "color"
       },
-      "warning light": {
+      "warning-light": {
         "value": "#fbe3d3",
         "type": "color"
       }
