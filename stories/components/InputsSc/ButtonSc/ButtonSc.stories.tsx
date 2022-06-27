@@ -4,6 +4,12 @@ import ButtonSc from "./ButtonSc";
 
 export default {
   title: "Components/InputsSc/ButtonSc",
+  parameters: {
+    design: {
+       type: 'figma',
+       url: 'https://www.figma.com/file/bXRH1P1rLzUqPJaLsC4Ura/Figma-Tokens-PoC-%E2%80%93-Design-System-2.0-(Copy)?node-id=820%3A5699'
+    }
+  },
   component: ButtonSc,
 } as ComponentMeta<typeof ButtonSc>;
 
