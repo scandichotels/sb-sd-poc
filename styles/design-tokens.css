@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Mon, 27 Jun 2022 18:37:42 GMT
+ * Generated on Mon, 27 Jun 2022 20:17:46 GMT
  */
 
 :root {
+  --token_spacing-52: 3.25rem;
   --token_border-radius-24: 1.5rem;
   --token_border-radius-20: 1.25rem;
   --token_border-radius-16: 1rem;
