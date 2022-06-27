@@ -4,6 +4,7 @@ import ButtonSc from "./ButtonSc";
 
 export default {
   title: "Components/InputsSc/ButtonSc",
+  // This is a Figma Plugin thing – read following article: https://help.figma.com/hc/en-us/articles/360045003494-Storybook-and-Figma
   parameters: {
     design: {
        type: 'figma',
