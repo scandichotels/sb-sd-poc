@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 27 Jun 2022 20:17:46 GMT
+ * Generated on Mon, 27 Jun 2022 20:44:32 GMT
  */
 
 export const tokenBackgroundsSite = "#f3f2f1";
@@ -109,3 +109,5 @@ export const tokenBorderRadius16 = "1rem";
 export const tokenBorderRadius20 = "1.25rem";
 export const tokenBorderRadius24 = "1.5rem";
 export const tokenSpacing52 = "3.25rem";
+export const tokenButtonBorderRadius50 = "3.125rem";
+export const tokenBorderRadius28 = "1.75rem";

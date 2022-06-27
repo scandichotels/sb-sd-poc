@@ -548,5 +548,16 @@
     "value": 52,
     "type": "spacing",
     "rawValue": "52"
+  },
+  "button-border-radius-50": {
+    "value": 50,
+    "type": "borderRadius",
+    "description": "A border radius for buttons",
+    "rawValue": "50"
+  },
+  "border-radius-28": {
+    "value": 28,
+    "type": "borderRadius",
+    "rawValue": "28"
   }
 }
