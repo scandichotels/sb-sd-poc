@@ -7,6 +7,7 @@ import Flow from './assets/flow.svg';
 import Plugin from './assets/plugin.svg';
 import Repo from './assets/repo.svg';
 import StackAlt from './assets/stackalt.svg';
+import ScancdigLogotype from './assets/scandic-logotype.svg'
 
 <Meta title="Example/Introduction" />
 
@@ -111,10 +112,20 @@ import StackAlt from './assets/stackalt.svg';
       font-size: 12px;
       display: inline-block;
     }
+
+    .scandic-logotype {
+      max-width:300px;
+      margin: 1rem 0 2rem 0;
+    }
+    
   `}
 </style>
 
-# Welcome to Storybook
+# Welcome to Scandic Hotels Storybook
+
+<div className="scandic-logotype">
+  <img src={ScancdigLogotype} alt="Scandic Logotype" />
+</div>
 
 Storybook helps you build UI components in isolation from your app's business logic, data, and context.
 That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
