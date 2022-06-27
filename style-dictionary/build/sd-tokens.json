@@ -559,5 +559,10 @@
     "value": 28,
     "type": "borderRadius",
     "rawValue": "28"
+  },
+  "spacing-56": {
+    "value": 56,
+    "type": "spacing",
+    "rawValue": "56"
   }
 }
