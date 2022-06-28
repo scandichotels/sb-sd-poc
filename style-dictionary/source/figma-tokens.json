@@ -429,6 +429,10 @@
     "spacing-56": {
       "value": "56",
       "type": "spacing"
+    },
+    "axel-radius-100": {
+      "value": "100",
+      "type": "borderRadius"
     }
   },
   "$themes": []
