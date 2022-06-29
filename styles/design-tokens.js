@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 29 Jun 2022 06:46:02 GMT
+ * Generated on Wed, 29 Jun 2022 15:25:17 GMT
  */
 
 export const tokenBackgroundsSite = "#f3f2f1";
@@ -15,7 +15,7 @@ export const tokenMemberBrown = "#5f5043";
 export const tokenMemberDarkBrown = "#3d3835";
 export const tokenComponentsOrange = "#c65214";
 export const tokenComponentsTealDark = "#006B75";
-export const tokenComponentsTeal = "#d39d17";
+export const tokenComponentsTeal = "#00838E";
 export const tokenMeetingPurple = "#8d3a7c";
 export const tokenBrandNordicSea = "#00838E";
 export const tokenBrandLingonBerry = "#cd0921";
